@@ -13,18 +13,21 @@ import javax.persistence.OneToMany;
 @Entity
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 	private String description;
-	
+
 	@OneToMany(mappedBy = "category")
 	private List<Book> books = new ArrayList<Book>();
 
-	public Category() {
+	public Category(Integer id, String name, String description) {
 		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
 	}
 
 	public Integer getId() {
@@ -33,13 +36,6 @@ public class Category implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Category(Integer id, String name, String description) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
 	}
 
 	public String getName() {
@@ -56,6 +52,14 @@ public class Category implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 	@Override
