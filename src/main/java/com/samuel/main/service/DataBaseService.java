@@ -12,7 +12,6 @@ import com.samuel.main.repository.CategoryRepository;
 
 @Service
 public class DataBaseService {
-	
 	@Autowired
 	private CategoryRepository categoryRepository;
 	@Autowired
